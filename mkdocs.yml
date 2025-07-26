@@ -1,0 +1,38 @@
+site_name: AI赋能软件开发实践手册
+theme:
+  name: material
+nav:
+  - '首页': 'index.md'
+  - '前言':
+    - '什么是AI赋能软件开发': '00-Introduction/00-what-is-ai-empowered-development.md'
+    - '目标读者': '00-Introduction/01-who-is-this-for.md'
+  - '基础篇':
+    - 'AI 开发助手':
+      - '主流AI Chat工具': '01-Foundations/00-ai-assistants/00-chat-tools.md'
+      - '有效提问技巧': '01-Foundations/00-ai-assistants/01-prompt-engineering.md'
+    - '开发环境集成':
+      - 'VS Code + Copilot': '01-Foundations/01-ide-integration/00-vscode-copilot.md'
+      - 'JetBrains AI Assistant': '01-Foundations/01-ide-integration/01-jetbrains-ai-assistant.md'
+      - 'Gemini CLI': '01-Foundations/01-ide-integration/02-gemini-cli.md'
+      - 'Anthropic Claude': '01-Foundations/01-ide-integration/03-claude.md'
+      - 'Cursor': '01-Foundations/01-ide-integration/04-cursor.md'
+  - '实践篇':
+    - '需求分析与设计':
+      - '生成用户故事': '02-Practices/00-requirements-and-design/00-user-stories.md'
+      - '辅助原型设计': '02-Practices/00-requirements-and-design/01-prototyping.md'
+    - '编码实现':
+      - '代码生成与补全': '02-Practices/01-coding/00-code-generation.md'
+      - '代码重构与优化': '02-Practices/01-coding/01-refactoring.md'
+      - '编写正则表达式': '02-Practices/01-coding/02-regex.md'
+    - '测试与质量保障':
+      - '生成单元测试': '02-Practices/02-testing-and-qa/00-unit-tests.md'
+      - '生成测试数据': '02-Practices/02-testing-and-qa/01-test-data.md'
+      - '代码解释与文档': '02-Practices/02-testing-and-qa/02-code-explanation.md'
+    - '部署与运维':
+      - '生成自动化脚本': '02-Practices/03-deployment-and-devops/00-automation-scripts.md'
+      - '日志分析与Debug': '02-Practices/03-deployment-and-devops/01-log-analysis.md'
+  - '工具篇':
+    - 'AI工具索引': '03-Tooling/00-ai-tool-index.md'
+    - '开源模型与本地化': '03-Tooling/01-local-deployment.md'
+  - '贡献指南': '04-Contributing/README.md'
+  - '附录': '05-Appendix/README.md'
