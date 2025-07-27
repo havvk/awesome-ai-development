@@ -1,0 +1,7 @@
+plugins:
+  line-length:
+    enabled: false
+  no-emphasis-as-heading:
+    enabled: false
+  first-line-h1:
+    enabled: false

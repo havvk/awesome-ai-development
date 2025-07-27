@@ -1,0 +1,6 @@
+# Protect critical configuration files from unintentional changes.
+# Any modification to these files will require explicit approval from the repository owner.
+
+CNAME                                     @havvk
+mkdocs.yml                                @havvk
+.github/workflows/publish-docs.yml        @havvk

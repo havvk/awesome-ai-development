@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.repository == 'havvk/awesome-ai-development'
     runs-on: ubuntu-latest # 使用最新的 Ubuntu 虚拟机环境
     steps:
       - name: Checkout repository
@@ -28,7 +29,11 @@ jobs:
       - name: Install dependencies
         run: | # 步骤3：安装所有需要的 Python 包
           python -m pip install --upgrade pip
-          pip install mkdocs mkdocs-material mkdocs-include-markdown-plugin
+          pip install mkdocs mkdocs-material mkdocs-include-markdown-plugin pymarkdownlnt
+
+      - name: Lint Markdown files
+        run: |
+          pymarkdown --config .pymarkdown.yml scan docs/**/*.md
 
       - name: Deploy to GitHub Pages
         run: | # 步骤4：部署网站
