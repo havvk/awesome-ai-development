@@ -15,6 +15,7 @@
 > **初步想法：** 我们希望学生能够保存他们喜欢的课程，方便以后查看。
 >
 > **你的任务：**
+>
 > 1.  识别这个功能的核心用户角色。
 > 2.  为这个角色编写一个或多个标准格式的用户故事（As a [角色], I want [功能], so that [价值]）。
 > 3.  为每个用户故事，编写 3-5 条具体的验收标准 (Acceptance Criteria)。
@@ -33,6 +34,7 @@
 > **so that** I can easily find and access it later without searching again.
 >
 > **验收标准:**
+>
 > *   **Given** I am on a course details page,
 >     **When** I click the "Add to Favorites" button (e.g., a heart icon),
 >     **Then** the button should change to a "favorited" state (e.g., a filled heart icon).
@@ -84,6 +86,7 @@
 ### 总结
 
 通过与 AI 协作，产品经理和开发团队可以：
+
 *   **节省时间:** 快速将想法结构化，减少在撰写标准文档上的时间消耗。
 *   **提高质量:** AI 可以帮助思考各种边界情况，从而编写出更全面的验收标准。
 *   **促进沟通:** 清晰、一致的用户故事是团队高效沟通的基础。
