@@ -10,12 +10,14 @@ nav:
     - 'AI 开发助手':
       - '主流AI Chat工具': '01-Foundations/00-ai-assistants/00-chat-tools.md'
       - '有效提问技巧': '01-Foundations/00-ai-assistants/01-prompt-engineering.md'
+    - 'AI 智能体':
+      - '什么是AI智能体': '01-Foundations/01-ai-agents/00-what-is-an-ai-agent.md'
     - '开发环境集成':
-      - 'VS Code + Copilot': '01-Foundations/01-ide-integration/00-vscode-copilot.md'
-      - 'JetBrains AI Assistant': '01-Foundations/01-ide-integration/01-jetbrains-ai-assistant.md'
-      - 'Gemini CLI': '01-Foundations/01-ide-integration/02-gemini-cli.md'
-      - 'Anthropic Claude': '01-Foundations/01-ide-integration/03-claude.md'
-      - 'Cursor': '01-Foundations/01-ide-integration/04-cursor.md'
+      - 'VS Code + Copilot': '01-Foundations/02-ide-integration/00-vscode-copilot.md'
+      - 'JetBrains AI Assistant': '01-Foundations/02-ide-integration/01-jetbrains-ai-assistant.md'
+      - 'Gemini CLI': '01-Foundations/02-ide-integration/02-gemini-cli.md'
+      - 'Anthropic Claude': '01-Foundations/02-ide-integration/03-claude.md'
+      - 'Cursor': '01-Foundations/02-ide-integration/04-cursor.md'
   - '实践篇':
     - '需求分析与设计':
       - '生成用户故事': '02-Practices/00-requirements-and-design/00-user-stories.md'
