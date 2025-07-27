@@ -1,0 +1,39 @@
+# .github/workflows/publish-docs.yml
+
+name: Publish Docs to GitHub Pages
+
+# 触发工作流的条件
+on:
+  push:
+    branches:
+      - main  # 当 main 分支有推送时触发
+  workflow_dispatch: # 允许手动触发
+
+# 为工作流设置权限，允许它向仓库写入内容（推送 gh-pages 分支）
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest # 使用最新的 Ubuntu 虚拟机环境
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # 步骤1：检出代码
+
+      - name: Set up Python
+        uses: actions/setup-python@v5 # 步骤2：设置 Python 环境
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: | # 步骤3：安装所有需要的 Python 包
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material mkdocs-include-markdown-plugin
+
+      - name: Deploy to GitHub Pages
+        run: | # 步骤4：部署网站
+          # 配置 git 用户，这样 gh-deploy 才能代表你进行提交
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 运行部署命令，--force 确保每次都用最新的内容覆盖旧的部署
+          mkdocs gh-deploy --force

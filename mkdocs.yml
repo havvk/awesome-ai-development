@@ -1,6 +1,9 @@
 site_name: AI赋能软件开发实践手册
+repo_url: https://github.com/havvk/awesome-ai-development
 theme:
   name: material
+plugins:
+  - include-markdown
 nav:
   - '首页': 'index.md'
   - '前言':
