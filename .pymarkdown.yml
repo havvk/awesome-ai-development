@@ -1,7 +1,42 @@
+# .pymarkdown.yml
+# Relaxed configuration to allow for specific formatting choices.
 plugins:
+  # Rule MD001: Allow non-consecutive heading levels (e.g., h1 -> h3).
+  heading-increment:
+    enabled: false
+
+  # Rule MD013: Disable line length restrictions.
   line-length:
     enabled: false
+
+  # Rule MD022: Allow headings without blank lines around them.
+  blanks-around-headings:
+    enabled: false
+
+  # Rule MD029: Allow unordered list item prefixes.
+  ol-prefix:
+    enabled: false
+
+  # Rule MD030: Allow variable spacing after list markers.
+  list-marker-space:
+    enabled: false
+
+  # Rule MD031: Allow fenced code blocks without blank lines around them.
+  blanks-around-fences:
+    enabled: false
+
+  # Rule MD036: Disable warnings for emphasis used as headings.
   no-emphasis-as-heading:
     enabled: false
+
+  # Rule MD038: Allow spaces inside code span elements.
+  no-space-in-code:
+    enabled: false
+
+  # Rule MD041: Do not require files to start with a top-level heading.
   first-line-h1:
+    enabled: false
+
+  # Rule MD047: Do not require a single trailing newline.
+  single-trailing-newline:
     enabled: false
