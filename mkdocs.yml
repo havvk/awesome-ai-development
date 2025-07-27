@@ -41,3 +41,5 @@ nav:
     - '开源模型与本地化': '03-Tooling/01-local-deployment.md'
   - '贡献指南': '04-Contributing/README.md'
   - '附录': '05-Appendix/README.md'
+markdown_extensions:
+  - pymdownx.superfences
