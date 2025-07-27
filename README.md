@@ -2,7 +2,7 @@
 
 这是一个由社区共同维护的开源项目，致力于全面梳理和介绍“AI赋能软件开发”所需的工具、方法和最佳实践。内容涵盖从需求分析、编码、测试到部署的整个软件生命周期。无论您是开发者、测试工程师还是项目经理，都能在这里找到AI如何改变您工作方式的答案。
 
-**在线阅读：[https://aiia.one/](https://aiia.one/)**
+**在线阅读：[https://aiia.one/](https://aiia.one/)** | **GitHub 仓库：[https://github.com/havvk/awesome-ai-development](https://github.com/havvk/awesome-ai-development)**
 
 ---
 
