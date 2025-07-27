@@ -68,14 +68,14 @@
    git commit -m "feat: Add guide for NewTool"
    ```
 
-6. **推送到你的 Fork**
+7. **推送到你的 Fork**
    将你的本地分支推送到你的 GitHub Fork。
 
    ```bash
    git push origin your-branch-name
    ```
 
-7. **创建 Pull Request (PR)**
+8. **创建 Pull Request (PR)**
    回到你的 GitHub Fork 页面，你会看到一个提示，点击 "Compare & pull request" 按钮。填写 PR 的标题和描述，清晰地说明你的变更内容和原因，然后提交。
 
 ## 行为准则
