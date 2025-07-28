@@ -59,11 +59,12 @@ AI 会自动分析函数签名和内部逻辑，生成符合语言标准（如 J
 
 **操作流程:**
 
-1.  在终端运行 `git diff --staged`，复制所有暂存区的代码变更。
-2.  将复制的内容粘贴到 AI Chat 中。
-3.  **Prompt:**
-    > "Based on the following git diff, please write a concise and informative commit message following the **Conventional Commits** specification."
-    > (基于以下的 git diff，请遵循**约定式提交**规范，为我编写一条简洁且信息丰富的提交信息。)
+1. 在终端运行 `git diff --staged`，复制所有暂存区的代码变更。
+2. 将复制的内容粘贴到 AI Chat 中。
+3. **Prompt:**
+   > "Based on the following git diff, please write a concise and informative commit message following the **Conventional Commits** specification."
+   >
+   > (基于以下的 git diff，请遵循**约定式提交**规范，为我编写一条简洁且信息丰富的提交信息。)
 
 **AI 可能的输出:**
 
