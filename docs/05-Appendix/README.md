@@ -24,7 +24,7 @@
 
 ### 常用资源
 
-*   **Hugging Face:** (https://huggingface.co/) - 全球最大的开源 AI 模型、数据集和工具的社区和平台。
-*   **OpenAI Cookbook:** (https://github.com/openai/openai-cookbook) - OpenAI 官方提供的、关于如何高效使用其 API 的技巧和代码示例。
+*   [**Hugging Face**](https://huggingface.co/) - 全球最大的开源 AI 模型、数据集和工具的社区和平台。
+*   [**OpenAI Cookbook**](https://github.com/openai/openai-cookbook) - OpenAI 官方提供的、关于如何高效使用其 API 的技巧和代码示例。
 
 *(本页内容将持续更新...)*
