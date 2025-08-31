@@ -18,7 +18,7 @@
 2.  **安装依赖:**
     在项目根目录下，运行以下命令来安装所需的工具：
     ```bash
-    pip install mkdocs mkdocs-material
+    pip install mkdocs mkdocs-material mkdocs-include-markdown-plugin
     ```
 
 3.  **启动本地服务器:**
