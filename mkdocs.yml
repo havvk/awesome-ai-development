@@ -20,6 +20,7 @@ nav:
       - 'JetBrains AI Assistant': '01-Foundations/02-ide-integration/01-jetbrains-ai-assistant.md'
       - 'Gemini CLI': '01-Foundations/02-ide-integration/02-gemini-cli.md'
       - 'Anthropic Claude': '01-Foundations/02-ide-integration/03-claude.md'
+      - 'Codex CLI': '01-Foundations/02-ide-integration/05-codex.md'
       - 'Cursor': '01-Foundations/02-ide-integration/04-cursor.md'
   - '实践篇':
     - '需求分析与设计':
