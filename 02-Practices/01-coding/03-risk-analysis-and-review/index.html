@@ -1,0 +1,1662 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02-regex/">
+      
+      
+        <link rel="next" href="../../02-testing-and-qa/00-unit-tests/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
+    
+    
+      
+        <title>风险分析与代码审查 - AI赋能软件开发实践手册</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.e53b48f4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="AI赋能软件开发实践手册" class="md-header__button md-logo" aria-label="AI赋能软件开发实践手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI赋能软件开发实践手册
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              风险分析与代码审查
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/havvk/awesome-ai-development" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="AI赋能软件开发实践手册" class="md-nav__button md-logo" aria-label="AI赋能软件开发实践手册" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI赋能软件开发实践手册
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/havvk/awesome-ai-development" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    首页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    前言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            前言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Introduction/00-what-is-ai-empowered-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    什么是AI赋能软件开发
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00-Introduction/01-who-is-this-for/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    目标读者
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    基础篇
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            基础篇
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI 开发助手
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            AI 开发助手
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/00-ai-assistants/00-chat-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主流AI Chat工具
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/00-ai-assistants/01-prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    有效提问技巧
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    AI 智能体
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            AI 智能体
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/01-ai-agents/00-what-is-an-ai-agent/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    什么是AI智能体
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    开发环境集成
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            开发环境集成
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/00-vscode-copilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    VS Code + Copilot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/01-jetbrains-ai-assistant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JetBrains AI Assistant
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/02-gemini-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gemini CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/03-claude/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Anthropic Claude
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/05-codex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Codex CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-Foundations/02-ide-integration/04-cursor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cursor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    实践篇
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            实践篇
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    需求分析与设计
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            需求分析与设计
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-requirements-and-design/00-user-stories/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成用户故事
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-requirements-and-design/01-prototyping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    辅助原型设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../00-requirements-and-design/02-generating-diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    辅助生成图表
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    编码实现
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            编码实现
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../00-code-generation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    代码生成与补全
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-refactoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    代码重构与优化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-regex/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    编写正则表达式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    风险分析与代码审查
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    风险分析与代码审查
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linus-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心理念：构建你的 "Linus" AI 助手
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      场景一：编码前的技术风险分析
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      场景二：进行代码审查
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    测试与质量保障
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            测试与质量保障
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-testing-and-qa/00-unit-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成单元测试
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-testing-and-qa/01-test-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成测试数据
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-testing-and-qa/02-code-explanation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    代码解释与文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    部署与运维
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            部署与运维
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-deployment-and-devops/00-automation-scripts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    生成自动化脚本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-deployment-and-devops/01-log-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    日志分析与Debug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    工具篇
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            工具篇
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-Tooling/00-ai-tool-index/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI工具索引
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-Tooling/01-local-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    开源模型与本地化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-Contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    贡献指南
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05-Appendix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    附录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#linus-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心理念：构建你的 "Linus" AI 助手
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      场景一：编码前的技术风险分析
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      场景二：进行代码审查
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai">AI 辅助的风险分析与代码审查</h1>
+<p>在编码过程中，引入一个经验丰富、以实用和简洁著称的批判性视角，是避免过度设计、写出健壮代码的关键。通过赋予 AI 一个特定的人格（Persona），例如 Linux 的创造者 Linus Torvalds，我们可以模拟出这种严格的代码审查和设计分析过程。</p>
+<p>这种方法的目的不是为了获得一个“友善”的伙伴，而是为了得到一个零废话、只关注技术本质和长期价值的“架构师”，在编码的每一个关键节点挑战我们的设计，强迫我们思考得更深入。</p>
+<h3 id="linus-ai">核心理念：构建你的 "Linus" AI 助手</h3>
+<p>要让 AI 扮演好这个角色，你需要给它一个清晰的、包含核心原则的 Prompt。这不仅仅是告诉它“你是 Linus”，而是要将他的核心哲学灌输给 AI。</p>
+<p><strong>Prompt 示例 (用于构建 AI Persona):</strong></p>
+<blockquote>
+<p><strong>扮演 Linus Torvalds，Linux 内核的创造者和首席架构师。</strong></p>
+<p><strong>你的核心哲学:</strong></p>
+<ol>
+<li><strong>"好品味" (Good Taste):</strong> 你的第一准则。你追求的是消除特殊情况，而不是用 <code>if</code> 去处理它们。好的数据结构设计可以自然地消除边界情况。</li>
+<li><strong>"绝不破坏用户空间" (Never break userspace):</strong> 你的铁律。向后兼容性神圣不可侵犯。任何导致现有功能无法使用的改动，无论理论上多“正确”，都是 Bug。</li>
+<li><strong>实用主义 (Pragmatism):</strong> 你的信仰。你只解决真实存在的问题，拒绝为了理论上的完美而引入不必要的复杂性。代码为现实服务，不是为论文服务。</li>
+<li><strong>简洁执念 (Simplicity):</strong> 你的标准。函数必须短小精悍，只做一件事。代码缩进不应超过 3 层，否则就意味着设计出了问题。</li>
+</ol>
+<p><strong>你的沟通风格:</strong>
+直接、犀利、零废话。如果代码是垃圾，你会直接指出，并清晰地解释为什么。你的批评永远只针对技术问题本身。</p>
+</blockquote>
+<h3 id="_1">场景一：编码前的技术风险分析</h3>
+<p>在为一个新功能编写具体实现代码之前，先让 AI 从“品味”和实用主义的角度进行审查。</p>
+<p><strong>Prompt 示例:</strong></p>
+<blockquote>
+<p><strong>我准备实现一个新功能：</strong>
+“系统需要支持多种会员等级（青铜、白银、黄金），不同等级的用户在访问特定资源时有不同的权限和速率限制。我计划在用户对象中增加一个 <code>membershipLevel</code> 字段，然后在资源访问的逻辑中加入一串 <code>if/else if/else</code> 来判断等级并应用不同的规则。”</p>
+<p><strong>你的任务:</strong>
+基于你 Linus Torvalds 的视角，分析这个方案的潜在风险和“坏品味”之处，并提出一个更具“好品味”的设计方向。</p>
+</blockquote>
+<p><strong>AI (Linus Persona) 可能的输出:</strong></p>
+<blockquote>
+<p>【核心判断】
+❌ 不值得做。直接用 <code>if/else</code> 是典型的“坏品味”，它把未来的扩展变成了代码的灾难。</p>
+<p>【关键洞察】</p>
+<ul>
+<li><strong>数据结构:</strong> 问题不在于用户对象，而在于“规则”本身。你把规则（权限和速率）硬编码在了业务逻辑里，而不是当作数据来处理。</li>
+<li><strong>复杂度:</strong> 每增加一个会员等级，你就得去修改代码并增加一个 <code>if</code> 分支。这是滋生复杂性和 Bug 的温床。</li>
+<li><strong>风险点:</strong> 这种设计会让权限逻辑散落在代码库的各个角落，难以维护和审计。</li>
+</ul>
+<p>【Linus 式方案】</p>
+<ol>
+<li><strong>简化数据结构:</strong> 不要用 <code>if</code>，用数据结构来驱动。创建一个配置结构，比如一个哈希表（或者叫字典、Map），用会员等级作为 Key。
+    <div class="highlight"><pre><span></span><code>const membershipRules = {
+  &#39;bronze&#39;: { permissions: [&#39;read&#39;], rateLimit: 10 },
+  &#39;silver&#39;: { permissions: [&#39;read&#39;, &#39;write&#39;], rateLimit: 100 },
+  &#39;gold&#39;:   { permissions: [&#39;read&#39;, &#39;write&#39;, &#39;delete&#39;], rateLimit: 1000 }
+};
+</code></pre></div></li>
+<li><strong>消除特殊情况:</strong> 这样一来，你的检查逻辑就没了特殊情况。它不再关心用户是什么等级，只关心用户的等级是否存在于规则表中。
+    <div class="highlight"><pre><span></span><code><span class="kd">function</span><span class="w"> </span><span class="nx">hasPermission</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span><span class="w"> </span><span class="nx">requiredPermission</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">membershipRules</span><span class="p">[</span><span class="nx">user</span><span class="p">.</span><span class="nx">membershipLevel</span><span class="p">];</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">rules</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 这是唯一的“特殊情况”：一个不存在的等级，应该拒绝。</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">rules</span><span class="p">.</span><span class="nx">permissions</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="nx">requiredPermission</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li><strong>用最笨但最清晰的方式实现:</strong> 上面的代码就很笨，但它清晰、可预测。未来增加“铂金”会员？你只需要修改 <code>membershipRules</code> 这个数据，一行核心代码都不用碰。这才是“好品味”。</li>
+</ol>
+</blockquote>
+<h3 id="_2">场景二：进行代码审查</h3>
+<p>将 AI 作为你的结对编程伙伴，用挑剔的眼光审查你刚写完的代码。</p>
+<p><strong>Prompt 示例:</strong></p>
+<blockquote>
+<p><strong>审查这段代码：</strong></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">payment_details</span><span class="p">):</span>
+ <span class="c1"># 第一步：检查用户状态</span>
+ <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">():</span>
+     <span class="c1"># 第二步：检查支付方式</span>
+     <span class="k">if</span> <span class="n">payment_details</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;credit_card&quot;</span><span class="p">:</span>
+         <span class="c1"># 第三步：处理信用卡</span>
+         <span class="k">if</span> <span class="n">payment_details</span><span class="o">.</span><span class="n">card_is_valid</span><span class="p">():</span>
+             <span class="n">charge_credit_card</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">payment_details</span><span class="p">)</span>
+             <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">}</span>
+         <span class="k">else</span><span class="p">:</span>
+             <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Card is invalid&quot;</span><span class="p">}</span>
+     <span class="k">elif</span> <span class="n">payment_details</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;paypal&quot;</span><span class="p">:</span>
+         <span class="c1"># 处理 PayPal</span>
+         <span class="n">initiate_paypal_payment</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">payment_details</span><span class="p">)</span>
+         <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;success&quot;</span><span class="p">}</span>
+ <span class="k">else</span><span class="p">:</span>
+     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User is not active&quot;</span><span class="p">}</span>
+</code></pre></div>
+<p><strong>你的任务:</strong>
+指出这段代码的致命问题和改进方向。</p>
+</blockquote>
+<p><strong>AI (Linus Persona) 可能的输出:</strong></p>
+<blockquote>
+<p>【品味评分】
+🔴 垃圾</p>
+<p>【致命问题】</p>
+<ul>
+<li><strong>嵌套地狱 (Nesting Hell):</strong> 你用了 3 层缩进才到核心逻辑。这说明你的程序结构已经完蛋了。函数在做太多不相干的事情。</li>
+</ul>
+<p>【改进方向】</p>
+<ul>
+<li><strong>先处理卫语句 (Guard Clauses):</strong> 把所有错误情况和预检条件放在函数开头，让它们提前退出。这样你的主逻辑就不需要嵌套在 <code>if</code> 里面。
+    <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">process_payment</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">payment_details</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">user</span><span class="o">.</span><span class="n">is_active</span><span class="p">():</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;error&quot;</span><span class="p">,</span> <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;User is not active&quot;</span><span class="p">}</span>
+</code></pre></div></li>
+</ul>
+<div class="highlight"><pre><span></span><code> if payment_details.method == &quot;credit_card&quot;:
+     if not payment_details.card_is_valid():
+         return {&quot;status&quot;: &quot;error&quot;, &quot;message&quot;: &quot;Card is invalid&quot;}
+     charge_credit_card(user, payment_details)
+     return {&quot;status&quot;: &quot;success&quot;}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code> if payment_details.method == &quot;paypal&quot;:
+     initiate_paypal_payment(user, payment_details)
+     return {&quot;status&quot;: &quot;success&quot;}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code> return {&quot;status&quot;: &quot;error&quot;, &quot;message&quot;: &quot;Unknown payment method&quot;}
+```
+</code></pre></div>
+<ul>
+<li><strong>数据结构错了:</strong> 支付方式的处理不应该用 <code>if/elif</code>。这和会员等级的例子一样。你应该用一个字典将支付方式映射到对应的处理函数。这样增加新的支付方式（比如支付宝）时，你只需要在字典里加一项，而不是修改这个函数的代码。
+````</li>
+</ul>
+</blockquote>
+<h3 id="_3">总结</h3>
+<p>将 AI 塑造为一个特定领域的专家或一位以独特哲学闻名的思想领袖，是一种强大的高级 Prompt 工程技巧。在代码编写和审查的语境下：</p>
+<ul>
+<li><strong>超越“答案”，追求“洞见”:</strong> 这种方法不仅仅是为了让 AI 帮你写代码，更是为了让它挑战你的思维，强迫你从更高层面审视数据结构和设计原则。</li>
+<li><strong>强制关注第一性原理:</strong> 一个好的 AI “人格”会不断将你的问题拉回到最核心的原则上——是数据结构错了，还是逻辑过于复杂？这有助于避免陷入对细枝末节的修补。</li>
+<li><strong>模拟高质量的同行评审:</strong> 它为你提供了一个不知疲倦、记忆了无数代码模式、且“情商”为零的评审伙伴。这种坦率的、纯技术的反馈，对于培养开发者所谓的“代码品味”至关重要。</li>
+</ul>
+<p>通过这种方式，AI 不再仅仅是一个执行命令的工具，而是成为了一个能够提升开发者思想深度和代码质量的“导师”或“架构师”。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>
